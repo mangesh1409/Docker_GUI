@@ -1,0 +1,47 @@
+<style>
+.p3 {
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+input[type=text] {
+  width: 20%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+.button { background-color: #008CBA;
+	  border: none;
+	  color: white;
+	  padding: 15px 32px;
+	  text-align: center;
+	  text-decoration: none;
+	  display: inline-block;
+	  font-size: 16px;
+	  margin: 4px 2px;
+	  cursor: pointer;}
+</style>
+
+
+<label class="p3">[root@localhost ~]</label>
+<input type="text" id="x" name="x" onfocus = 'this.value = ""' >
+<button class="button" onclick="lw()">click</button>
+<div class="p3">Output</div>
+<pre>
+<div id="d1"></div>
+</pre>
+
+
+
+
+<script>
+function lw(){
+	var i=document.getElementById("x").value
+	var xhr=new XMLHttpRequest()
+	//xhr.onload()
+        xhr.open("GET","http://192.168.0.109/cgi-bin/js.py?x="+i, true)
+	xhr.send()
+	xhr.onload=function(){
+		var output=xhr.responseText;
+		document.getElementById("d1").innerHTML=output
+	}
+}
+</script>
